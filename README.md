@@ -13,3 +13,6 @@ To get started, just run
   pnpm install
   pnpm dev
 ```
+
+## TODO
+If you wanna help improve this boilerplate, you can use [this extension](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) to see what's left to do. You can also add new TODOs if you see anyhting that could be improved.
