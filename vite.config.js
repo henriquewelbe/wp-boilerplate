@@ -1,50 +1,39 @@
-import handlebars from 'vite-plugin-handlebars'
 import path from 'path'
 import { defineConfig } from 'vite'
-import { ifCond } from './src/handlebars/helpers'
-import { fileURLToPath, URL } from 'url'
-import getPagesData from './rollup.config.js'
+import liveReload from 'vite-plugin-live-reload'
 
 export default () => {
   return defineConfig({
-    root: './views/pages',
-    publicDir: '../../public',
-    appType: 'mpa',
+    root: '',
+    // TODO: configurar .env
+    base: process.env.NODE_ENV === 'development' ? '/' : '/dist/',
 
     server: {
       port: 3000,
-      open: true
+      cors: true,
+      https: false
     },
 
     build: {
-      outDir: '../../dist',
+      outDir: 'dist',
       assetsDir: './',
-      copyPublicDir: true
+      copyPublicDir: true,
+      manifest: true,
+      minify: true,
+      write: true,
+      // TODO: mudar target pra outro?
+      target: 'es2018'
     },
 
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src/jsapp', import.meta.url))
+    rollupOptions: {
+      input: {
+        // TODO: suprimir o erro do console de que não foi possível determinar o entry point (colocar o main.js também não funciona)
+        main: path.resolve(__dirname, '/main.js')
       }
     },
 
-    rollupInputOptions: {
-      input: getPagesData().then(data => data.input)
-    },
-
     plugins: [
-      handlebars({
-        partialDirectory: path.resolve(__dirname, 'views/partials'),
-
-        helpers: {
-          ifCond
-        },
-
-        // implementar DynamicRouter
-        context (pagePath) {
-          return getPagesData().then(data => data.input[pagePath])
-        }
-      })
+      liveReload('./**/*.php')
     ]
   })
 }

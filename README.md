@@ -1,5 +1,5 @@
+<!-- TODO: documentar boilerplate -->
 # POC vanilla js boilerplate
-
 ## Installation
 
 The boilerplate requires :

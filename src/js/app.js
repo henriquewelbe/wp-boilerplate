@@ -31,6 +31,7 @@ class App {
   }
 
   createPages () {
+    // TODO: criar animações para quando transicionar pra 404
     this.pages = {
       homepage: new Homepage(),
       about: new About()
@@ -96,7 +97,7 @@ class App {
   }
 
   addLinkListeners () {
-    // colocar if pra não adicionar se o href for email, tel, etc
+    // TODO: colocar if pra não transicionar se o href for email, tel, etc
     const links = document.querySelectorAll('a')
 
     each(links, link => {

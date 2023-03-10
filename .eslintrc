@@ -1,3 +1,7 @@
+// TODO: implementar eslint melhor
+// TODO: implementar linter pra php
+// TODO: implementar linter pra commit
+
 {
   "root": true,
   "extends": "standard",

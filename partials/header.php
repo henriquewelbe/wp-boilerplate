@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+  <?php wp_head() ?>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,17 +25,10 @@
   <meta name="twitter:title" content=meta.data.title>
   <meta name="twitter:description" content=meta.data.description>
   <!-- <meta property="twitter:image" content=meta.data.image ? meta.data.image.url : ''> -->
-
-  <script type="module" src="{{resolve-from-root '../../src/js/app.js'}}"></script>
 </head>
-<body class="page-template-{{template}}">
-  {{> cursor}}
-  {{> preloader}}
-    <div class="content" data-template={{template}}>
-      <div class={{template}}>
-        {{> navbar}}
-        {{> @partial-block }}
-      </div>
-    </div>
-  </body>
-</html>
+<body class="page-template-<?= strtolower(get_the_title()) ?>">
+  <?php get_template_part('partials/cursor'); ?>
+  <?php get_template_part('partials/preloader'); ?>
+    <div class="content" data-template="<?= strtolower(get_the_title()) ?>">
+      <div class="<?= strtolower(get_the_title()) ?>">
+      <?php get_template_part('partials/navbar'); ?>
