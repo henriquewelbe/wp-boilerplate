@@ -1,4 +1,3 @@
-import path from 'path'
 import { defineConfig } from 'vite'
 import liveReload from 'vite-plugin-live-reload'
 
@@ -16,19 +15,15 @@ export default () => {
 
     build: {
       outDir: 'dist',
-      assetsDir: './',
+      emptyOutDir: true,
       copyPublicDir: true,
       manifest: true,
       minify: true,
       write: true,
       // TODO: mudar target pra outro?
-      target: 'es2018'
-    },
-
-    rollupOptions: {
-      input: {
-        // TODO: suprimir o erro do console de que não foi possível determinar o entry point (colocar o main.js também não funciona)
-        main: path.resolve(__dirname, '/main.js')
+      target: 'es2018',
+      rollupOptions: {
+        input: 'main.js'
       }
     },
 
