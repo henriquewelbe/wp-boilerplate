@@ -35,3 +35,44 @@ add_filter('script_loader_tag', 'add_type_attribute' , 10, 3);
 $value = apply_filters( 'script_loader_tag', '', 'main', get_template_directory_uri() . '/src/js/app.js' );
 
 
+/**
+ * Register nav menus.
+*/
+add_action('after_setup_theme', 'register_menu');
+
+function register_menu()
+{
+  register_nav_menus(array(
+    'main-menu' => 'Menu principal',
+    'footer-pages-1' => 'Páginas footer 1',
+    'footer-pages-2' => 'Páginas footer 2',
+    'footer-pages-3' => 'Páginas footer 3',
+    'footer-menu' => 'Rodapé',
+  ));
+}
+
+/*
+* Add post_thumbnails suport.
+*/
+add_theme_support('post-thumbnails');
+
+/*
+* Add theme suport html5.
+*/
+add_theme_support(
+  'html5',
+  array(
+    'search-form',
+    'comment-form',
+    'comment-list',
+    'gallery',
+    'caption'
+  )
+);
+
+add_theme_support( 'responsive-embeds' );
+
+/*
+* Add theme suport title.
+*/
+add_theme_support( 'title-tag' );

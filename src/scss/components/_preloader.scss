@@ -1,1 +1,28 @@
-@use '../utils/functions' as *;
+@use "../utils/functions" as *;
+@use "../base" as *;
+
+.preloader {
+  background-color: $black;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+
+  display: none;
+
+  &__text {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__number {
+    font-size: 4rem;
+  }
+}
